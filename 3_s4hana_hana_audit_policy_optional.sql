@@ -234,3 +234,16 @@ CREATE AUDIT POLICY "_SAPS4_Opt_12 session connect successful"
   EXCEPT FOR <SAPABAP1>
   LEVEL ALERT TRAIL TYPE TABLE RETENTION 20;
 ALTER AUDIT POLICY "_SAPS4_Opt_12 session connect successful" ENABLE;
+
+-- optional: needed for system changelog
+-- System DB
+-- this policy should not cause many entries in the audit log
+CREATE AUDIT POLICY "_SAPS4_Opt_13 TenantDB modifications" 
+  AUDITING SUCCESSFUL
+    ALTER DATABASE,
+    DROP DATABASE,
+    RENAME DATABASE,
+    START DATABASE,
+    STOP DATABASE
+  LEVEL ALERT TRAIL TYPE TABLE RETENTION 90;
+ALTER AUDIT POLICY "_SAPS4_Opt_13 TenantDB modifications" ENABLE;
