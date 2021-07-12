@@ -239,7 +239,7 @@ ALTER AUDIT POLICY "_SAPS4_Opt_12 session connect successful" ENABLE;
 -- System DB
 -- this policy should not cause many entries in the audit log
 CREATE AUDIT POLICY "_SAPS4_Opt_13 TenantDB modifications" 
-  AUDITING SUCCESSFUL
+  AUDITING ALL
     ALTER DATABASE,
     DROP DATABASE,
     RENAME DATABASE,
